@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="row">
+  {% for character_in_dic in characters %}
+    <div class="col-sm-3 col-6">
+      <img src="{{character_in_dic.image}}" alt="{{character_in_dic.name}}"class="img-fluid img-thumbnail">
+      <h3 class="h5">{{character_in_dic.name}}</h3>
+      <p>
+        <a href="/profile/{{character_in_dic.id}}" class="btn btn-primary">Ver perfil</a>
+      </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
