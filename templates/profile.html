@@ -9,6 +9,13 @@
     <h3 class="h5">Species: {{profile.species}}</h3>
     <h3 class="h5">Origin: {{profile.origin.name}}, {{profile.origin.url}}</h3>
     <h3 class="h5">Location: {{profile.location.name}}, {{profile.location.url}}</h3>
+  <div>
+  {% for location_in_dic in profile %}
+  <div class="col-sm-3 col-6">
+    <p>
+      <a href="location/{{location_in_dic.id}}" class="btn btn-primary">See location</a>
+    </p>
   </div>
+  {% endfor %}
 </div>
 {% endblock %}
