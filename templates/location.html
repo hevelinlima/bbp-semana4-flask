@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="row">
+  <div>
+    <h3 class="h5">Location: {{location.name}}</h3>
+    <h3 class="h5">Type: {{location.type}}</h3>
+    <h3 class="h5">Dimension: {{location.dimension}}</h3>
+    <h3 class="h5">Residents of this locations: {{location.residents}}</h3>
+  </div>
+</div>
+{% endblock %}

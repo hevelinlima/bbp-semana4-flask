@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="row">
+  {% for episode_in_dic in episodes %}
+    <div class="col-sm-3 col-6">
+      <h4 class="h5">{{episode_in_dic.name}}</h4>
+      <h4 class="h5">{{episode_in_dic.air_date}}</h4>
+      <h4 class="h5">{{episode_in_dic.episode}}</h4>
+      <p>
+        <a href="episode/{{episode_in_dic.id}}" class="btn btn-primary">Ver episódio</a>
+      </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -2,9 +2,13 @@
 
 {% block content%}
 <div class="row">
-  <div class="col-sm-3 col-6">
+  <div>
     <img src="{{profile.image}}" alt="{{profile.name}}"class="img-fluid img-thumbnail">
-    <h3 class="h5">{{profile.name}}</h3>
+    <h3 class="h5">Name: {{profile.name}}</h3>
+    <h3 class="h5">Gender: {{profile.gender}}</h3>
+    <h3 class="h5">Species: {{profile.species}}</h3>
+    <h3 class="h5">Origin: {{profile.origin.name}}, {{profile.origin.url}}</h3>
+    <h3 class="h5">Location: {{profile.location.name}}, {{profile.location.url}}</h3>
   </div>
 </div>
 {% endblock %}

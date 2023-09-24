@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<div class="row">
+  {% for location_in_dic in locations %}
+    <div class="col-sm-3 col-6">
+      <h4 class="h5">{{location_in_dic.name}}</h4>
+      <h4 class="h5">{{location_in_dic.type}}</h4>
+      <h4 class="h5">{{location_in_dic.dimension}}</h4>
+      <p>
+        <a href="location/{{location_in_dic.id}}" class="btn btn-primary">See location</a>
+      </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
