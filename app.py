@@ -25,6 +25,9 @@ def get_profile(id):
     response = urllib.request.urlopen(url, cafile=certifi.where())
     data = response.read()
     dicionario = json.loads(data)
+    urlLocation = dicionario["location"]["url"]
+    parts = urlLocation.split("/")
+    dicionario["location"]["id"] = parts[-1]
 
     return render_template("profile.html", profile=dicionario)
 
