@@ -8,12 +8,23 @@
     <h3 class="h5">Gender: {{profile.gender}}</h3>
     <h3 class="h5">Species: {{profile.species}}</h3>
     <h3 class="h5">Origin: {{profile.origin.name}}, {{profile.origin.url}}</h3>
+    <div class="col-sm-3 col-6">
+    {% if profile.origin.id %}
+      <p>
+        <a href="/location/{{profile.origin.id}}" class="btn btn-primary">See character origin</a>
+      </p>
+    {% else %}
+      <p>
+        <a href="" class="btn btn-primary  disabled">Unknown location</a>
+      </p>
+    {% endif %}
+    </div>
     <h3 class="h5">Location: {{profile.location.name}}, {{profile.location.url}}</h3>
+    <div class="col-sm-3 col-6">
+      <p>
+        <a href="/location/{{profile.location.id}}" class="btn btn-primary">See character location</a>
+      </p>
+    </div>
   <div>
-  <div class="col-sm-3 col-6">
-    <p>
-      <a href="/location/{{profile.location.id}}" class="btn btn-primary">See location</a>
-    </p>
-  </div>
 </div>
 {% endblock %}

@@ -25,9 +25,19 @@ def get_profile(id):
     response = urllib.request.urlopen(url, cafile=certifi.where())
     data = response.read()
     dicionario = json.loads(data)
+
+    # Pegar o id da localização do personagen dentro da API
     urlLocation = dicionario["location"]["url"]
     parts = urlLocation.split("/")
     dicionario["location"]["id"] = parts[-1]
+
+    # Pegar o id da origem do persongem dentro da API
+    urlOrigin = dicionario["origin"]["url"]
+    if urlOrigin:
+        parts = urlOrigin.split("/")
+        dicionario["origin"]["id"] = parts[-1]
+    else:
+        dicionario["origin"]["id"] = None
 
     return render_template("profile.html", profile=dicionario)
 
@@ -70,6 +80,16 @@ def get_location(id):
     response = urllib.request.urlopen(url, cafile=certifi.where())
     data = response.read()
     dicionario = json.loads(data)
+
+    urlResidents = dicionario["residents"]
+    resident_ids = []
+
+    for resident in urlResidents:
+        parts = resident.split("/")
+        resident_id = parts[-1]
+        resident_ids.append(resident_id)
+
+    dicionario["resident_ids"] = resident_ids
 
     return render_template("location.html", location=dicionario)
 
