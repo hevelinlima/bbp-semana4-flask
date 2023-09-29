@@ -6,7 +6,15 @@
     <h3 class="h5">Episode's name: {{episode.name}}</h3>
     <h6 class="h5">Air date: {{episode.air_date}}</h6>
     <h6 class="h5">Episode: {{episode.episode}}</h6>
-    <h6 class="h5">Characters in this episode: {{episode.characters}}</h6>
+    <h6 class="h5">Characters in this episode:</h6>
+    <ul class="col-sm-3 col-6">
+      {% for character_id in episode.character_ids %}
+        <h3 class="h5"> Character {{character_id}} </h3>
+        <li>
+          <a href="/profile/{{character_id}}" class="btn btn-primary">See character profile</a>
+        </li>
+      {% endfor %}  
+    </ul>
   </div>
 </div>
 {% endblock %}

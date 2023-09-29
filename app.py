@@ -112,6 +112,16 @@ def get_episode(id):
     data = response.read()
     dicionario = json.loads(data)
 
+    urlCharacters = dicionario["characters"]
+    character_ids = []
+
+    for character in urlCharacters:
+        parts = character.split("/")
+        character_id = parts[-1]
+        character_ids.append(character_id)
+
+    dicionario["character_ids"] = character_ids
+
     return render_template("episode.html", episode=dicionario)
 
 
