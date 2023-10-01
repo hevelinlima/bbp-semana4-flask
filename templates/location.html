@@ -1,21 +1,35 @@
 {% extends "layout.html" %}
 
 {% block content%}
-<div class="row">
-  <div>
-    <h3 class="h5">Location: {{location.name}}</h3>
-    <h3 class="h5">Type: {{location.type}}</h3>
-    <h3 class="h5">Dimension: {{location.dimension}}</h3>
-    <h3 class="h5">Residents of this locations: </h3>
+<h3 class="h4">Information about location {{location.id}}: {{location.name}}</h3>
+<div>
+  <div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Location</th>
+                <td>{{location.name}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Type</th>
+                <td>{{location.type}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Dimension</th>
+                <td>{{location.dimension}}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h3 class="h5">Residents of this locations: </h3>
    
-    <ul class="col-sm-3 col-6">
-      {% for resident_id in location.resident_ids %}
-        <h3 class="h5"> Character {{resident_id}} </h3>
-        <li>
-          <a href="/profile/{{resident_id}}" class="btn btn-primary">See character profile</a>
-        </li>
-      {% endfor %}  
-    </ul>
+  <div class="col-sm-3 col-6">
+    {% for resident_id in location.resident_ids %}
+      <a href="/profile/{{resident_id}}" target="_blank">
+        <h3 class="h6"> Character {{resident_id}}:  </h3>
+      </a>
+    {% endfor %}  
   </div>
 </div>
 {% endblock %}

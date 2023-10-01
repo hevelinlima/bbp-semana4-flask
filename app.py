@@ -39,6 +39,17 @@ def get_profile(id):
     else:
         dicionario["origin"]["id"] = None
 
+    # Pegar o id dos episódios que o personagem aperece dentro da API
+    urlEpisode = dicionario["episode"]
+    episode_ids = []
+
+    for episode in urlEpisode:
+        parts = episode.split("/")
+        episode_id = parts[-1]
+        episode_ids.append(episode_id)
+
+    dicionario["episode_ids"] = episode_ids
+
     return render_template("profile.html", profile=dicionario)
 
 
@@ -123,23 +134,3 @@ def get_episode(id):
     dicionario["character_ids"] = character_ids
 
     return render_template("episode.html", episode=dicionario)
-
-
-"""
-@app.route("/location/lista")
-def get_list_locations():
-    url = "http://rickandmortyapi.com/api/location"
-    response = urllib.request.urlopen(url, cafile=certifi.where())
-    locations = response.read()
-    dicionario = json.loads(locations)
-    locations = []
-    for location_in_dic in dicionario["results"]:
-        location = {
-            "name": location_in_dic["name"],
-            "type": location_in_dic["type"],
-            "dimension": location_in_dic["dimension"],
-            "url": location_in_dic["url"],
-        }
-        locations.append(location)
-    return {"locations": locations}
-"""
