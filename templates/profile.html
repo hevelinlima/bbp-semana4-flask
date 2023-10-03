@@ -23,11 +23,23 @@
                 </tr>
                 <tr>
                     <th scope="row">Origin</th>
-                    <td><a href="/location/{{profile.origin.id}}" target="_blank">{{profile.origin.name}}</a></td>
+                    <td>
+                        {% if profile.origin.id %}
+                           <a href="/location/{{profile.origin.id}}" target="_blank">{{profile.origin.name}}</a>
+                        {% else %}
+                            unknown
+                        {% endif %}
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">Location</th>
-                    <td><a href="/location/{{profile.location.id}}" target="_blank">{{profile.location.name}}</a></td>
+                    <td>
+                        {% if profile.location.id %}
+                           <a href="/location/{{profile.location.id}}" target="_blank">{{profile.location.name}}</a>
+                        {% else %}
+                            unknown
+                        {% endif %}
+                    </td>
                 </tr>
             </tbody>
         </table>
